@@ -36,5 +36,35 @@ public class Product {
     @JsonFormat
     private boolean available;
     @JsonFormat
-    private int quantity;
+    private int stockQuantity;
+
+    @JsonFormat
+    private String imageName;
+
+    private String imageType;
+
+    @Lob
+    private byte[] imageData;
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+
 }
