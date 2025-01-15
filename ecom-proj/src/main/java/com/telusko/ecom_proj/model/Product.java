@@ -36,7 +36,7 @@ public class Product {
     @JsonFormat
     private boolean available;
     @JsonFormat
-    private int stockQuantity;
+    private int stock_quantity;
 
     @JsonFormat
     private String imageName;

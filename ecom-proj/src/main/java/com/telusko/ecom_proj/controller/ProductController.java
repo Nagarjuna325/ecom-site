@@ -73,12 +73,14 @@ public class ProductController {
 
     }
 
+    // we use mapping for update
     @PutMapping("/product/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable int id, @RequestPart Product product, @RequestPart MultipartFile imageFile) {
 
         Product product1 = null;
         try {
-            product1 = service.updateProduct(id, product, imageFile);
+            product1 = service.updateProduct(id, product, imageFile); // so who is going to update service repository or component it will in turn
+            // send request to repository layer or component to change the data and interact with database.
         } catch (IOException e) {
             return new ResponseEntity<>("Failed to update", HttpStatus.BAD_REQUEST);
         }
@@ -103,4 +105,15 @@ public class ProductController {
         }
 
     }
+
+    @GetMapping("/products/search")  // mapping the data entered in the frontend to back
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword) {
+
+        List<Product> products = service.searchProducts(keyword);
+        System.out.println("searching with " + keyword);
+        return new ResponseEntity<>(products, HttpStatus.OK); // we need to also return
+    }
+
+
+
 }
